@@ -3,6 +3,8 @@ title: "Python Keylogger With Sockets"
 date: 2023-04-14T10:46:32-05:00
 draft: false
 ---
+[Link to repo](https://github.com/darefitz/python-keylogger-with-sockets)
+
 I created a keylogger in python and setup sockets to allow the victim machine to send me the keylog contents.
 The keylog content is also parsed to be presented neatly.
 
